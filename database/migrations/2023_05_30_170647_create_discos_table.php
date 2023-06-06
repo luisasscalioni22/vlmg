@@ -12,12 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('discos', function (Blueprint $table) {
-            $table->id();
+            $table->BigIncrements('id');
             $table->timestamps();
             $table->string("name");
             $table->string("titulo");
-            $table->int("qtd");
-            $table->foreign("estilo_id")->references("id")->on("tipos");
+            $table->unsignedBigInteger("estilo_id");
+            $table->integer("qtd");
+            $table->foreign("estilo_id")->references("id")->on("estilos");
         });
     }
 
